@@ -4,6 +4,9 @@
 *.ipr
 *.iws
 
+# Maven
+target
+
 # Nodejs
 dist
 node_modules

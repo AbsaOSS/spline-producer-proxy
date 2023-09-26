@@ -9,6 +9,7 @@
         "test": "test"
     },
     "scripts": {
+        "sync-pom-version": "sync-pom-version",
         "test": "tap --ts 'test/**/*.test.ts' --no-coverage",
         "clean": "rm -rf dist",
         "build": "npm run clean && tsc",
@@ -33,6 +34,7 @@
         "copyfiles": "^2.4.1",
         "fastify-cli": "^5.7.1",
         "nodemon": "^2.0.22",
+        "sync-pom-version": "^1.1.0",
         "tap": "^16.3.7",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.2.0",
