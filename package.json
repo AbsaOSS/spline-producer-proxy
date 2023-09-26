@@ -1,6 +1,6 @@
 {
     "name": "spline-producer-proxy",
-    "version": "0.1.0",
+    "version": "0.1.1-SNAPSHOT",
     "main": "dist/index.js",
     "engines": {
         "node": ">=20.3 <21"
