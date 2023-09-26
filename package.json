@@ -1,0 +1,41 @@
+{
+    "name": "spline-producer-proxy",
+    "version": "0.1.0-SNAPSHOT",
+    "main": "dist/index.js",
+    "engines": {
+        "node": ">=20.3 <21"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "tap --ts 'test/**/*.test.ts' --no-coverage",
+        "clean": "rm -rf dist",
+        "build": "npm run clean && tsc",
+        "build:prod": "npm run build && npm run build:prod:copy && npm run build:prod:meta && npm run build:prod:trim",
+        "build:prod:copy": "copyfiles package*.json dist && cd dist && npm install --omit=dev",
+        "build:prod:meta": "cd dist && jq '{name, version, description, homepage, license, author, contributors, man, engines, os} | with_entries(select(.value != null))' package.json > metadata.json",
+        "build:prod:trim": "cd dist && npx modclean -r && rm -f package*.json",
+        "start": "npm run build && node dist/index.js",
+        "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node -r tsconfig-paths/register' src/index.ts"
+    },
+    "dependencies": {
+        "@fastify/autoload": "^5.0.0",
+        "@fastify/sensible": "^5.0.0",
+        "async-mutex": "^0.4.0",
+        "fastify": "^4.0.0",
+        "fastify-plugin": "^4.0.0"
+    },
+    "devDependencies": {
+        "@tsconfig/node20": "^1.0.1",
+        "@types/node": "^20.3.1",
+        "@types/tap": "^15.0.8",
+        "copyfiles": "^2.4.1",
+        "fastify-cli": "^5.7.1",
+        "nodemon": "^2.0.22",
+        "tap": "^16.3.7",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.1.3"
+    }
+}

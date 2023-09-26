@@ -1,0 +1,12 @@
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+
+# Nodejs
+dist
+node_modules
+
+# Spline
+spline*.dump
